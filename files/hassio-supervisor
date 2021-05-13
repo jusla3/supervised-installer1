@@ -21,7 +21,7 @@ HASSIO_IMAGE_ID=$(docker inspect --format='{{.Id}}' "${SUPERVISOR}")
 HASSIO_CONTAINER_ID=$(docker inspect --format='{{.Image}}' hassio_supervisor || echo "")
 
 runSupervisor() {
-    docker rm --force hassio_supervisor || true
+    docker rm --force hassio_supervisor2 || true
 
     # shellcheck disable=SC2086
     docker run --name hassio_supervisor \
@@ -40,4 +40,4 @@ runSupervisor() {
 
 # Run supervisor
 mkdir -p "${HASSIO_DATA}"
-([ "${HASSIO_IMAGE_ID}" = "${HASSIO_CONTAINER_ID}" ] && docker start --attach hassio_supervisor) || runSupervisor
+([ "${HASSIO_IMAGE_ID}" = "${HASSIO_CONTAINER_ID}" ] && docker start --attach hassio_supervisor2) || runSupervisor
