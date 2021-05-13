@@ -31,6 +31,7 @@ runSupervisor() {
         -v /run/docker.sock:/run/docker.sock \
         -v /run/dbus:/run/dbus \
         -v "${HASSIO_DATA}":/data \
+        -v /home/ubuntu/hassio:/config:rw \
         -e SUPERVISOR_SHARE="${HASSIO_DATA}" \
         -e SUPERVISOR_NAME=hassio_supervisor \
         -e HOMEASSISTANT_REPOSITORY="${HOMEASSISTANT}" \
